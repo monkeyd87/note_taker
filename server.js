@@ -20,11 +20,11 @@ app.get('/notes',(req,res)=>{
     res.sendFile(__dirname+'/public/notes.html')
 })
 
-app.get('/api/notes',(req,res)=>{
+app.route('/api/notes')
+.get((req,res)=>{
     res.sendFile(__dirname + '/db/db.json')
 })
-
-app.post('/api/notes', (req,res)=>{
+.post((req,res)=>{
     console.log(req.body)
     let note = req.body
 
@@ -35,12 +35,6 @@ app.post('/api/notes', (req,res)=>{
       fs.writeFile('db/db.json',JSON.stringify(db),(err)=>console.log(err))
     })
     res.send(req.url)
-    
-
-    
-    
-
-    
 })
 
 
